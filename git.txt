@@ -1,0 +1,110 @@
+lyyGitResources 292@
+
+406795921@qq.com
+
+
+SSH
+ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAwwyxCnfglFetMpfsOvdPYyGotbBCRyF+kfyHpjxlpx5yGEutRiF+8j2oFvYQBFm1AlrC+BLURH/lpBVW2IytclGvJnqTQ/pwDUzSpqXXCXkKr2kDxrsJtZbCFJFl7DEQisqQ+IkRliVOQWhzddjyy9ZhaFKIy6/mfvzcV5/ZbKCiQpLPfQKq4W6b3X6u27BPnfMiW1+TvB09BmIFTz35Nvzt/xfnDwA4XHd2bCGSs/RCWrNu10XK5j2CYN8Xt2Xpm5Y0A8CCHL1ZAER9/bLJzJCdo1dBm6LtmLf/6wehzN04Sd83pKGYWLBwlECHYxeAPEOuHsPiNIx+zLZh//epoQ== 406795921@qq.com
+
+
+
+
+git reflog  // 查看所有 commit id
+
+
+git reset --hard HEAD^ 上一个版本
+
+git reset --hard 3628164 // 回滚 3628164
+
+
+git diff HEAD -- readme.txt  // 看工作区和版本库里面最新版本的区别
+
+git checkout -- readme.txt //可以丢弃工作区的修改
+git checkout -- file命令中的“--”很重要，没有“--”，就变成了“创建一个新分支”的命令
+
+git reset HEAD readme.txt //撤掉对 缓存区的的修改
+
+
+rm test.txt // 做删除申请
+
+git rm test.txt //删掉
+
+
+
+git clone git@github.com:michaelliao/gitskills.git 
+
+还可以用https://github.com/michaelliao/gitskills.git 
+
+
+
+
+
+
+  从远程获取最新版本到本地
+$ git fetch origin master:temp
+
+From https://github.com/com360/android-app
+ * [new branch]      master     -> temp
+su@SUCHANGLI /e/eoe_client/android-app (master)
+git fetch origin master:temp 这句命令的意思是：从远程的origin仓库的master分支下载到本地并新建一个分支temp
+
+  比较本地的仓库和远程参考的区别
+$ git diff temp
+
+su@SUCHANGLI /e/eoe_client/android-app (master)
+命令的意思是：比较master分支和temp分支的不同
+由于我的没有区别就没有显示其他信息
+
+
+  合并temp分支到master分支
+$ git merge temp
+
+Already up-to-date.
+su@SUCHANGLI /e/eoe_client/android-app (master)
+由于没有区别，所以显示Already up-to-date.
+合并的时候可能会出现冲突，有时间了再把如何处理冲突写一篇博客补充上。
+
+
+
+  如果不想要temp分支了，可以删除此分支
+$ git branch -d temp
+
+
+
+ git branch 列出本地git库中的所有分支。在列出的分支中，若分支名前有*，则表示此分支为当前分支。 
+ git branch –r 列出服务器git库的所有分支。
+
+
+
+
+git checout –b 分支名 
+不但创建了分支，还将当前工作分支切换到了该分支上。 
+3.12.5. 切换到某个分支：git checkout 分支名 
+切换到主分支：git checkout master 
+3.12.6. 删除分支 
+       git branch –D 分支名 
+注意： 删除后，发生在该分支的所有变化都无法恢复。强制删除此分支。 
+3.12.7. 比较两个分支上的文件的区别 
+       git diff master 分支名 （比较主分支和另一个分支的区别） 
+3.12.8. 查看分支历史 
+       git-show-branch （查看当前分支的提交注释及信息） 
+       git-show-branch -all（查看所有分支的提交注释及信息）例如： 
+
+
+
+
+
+
+准备合并dev分支，请注意--no-ff参数，表示禁用“Fast forward”：
+
+$ git merge --no-ff -m "merge with no-ff" dev
+
+合并后，我们用git log看看分支历史：
+
+$ git log --graph --pretty=oneline --abbrev-commit
+
+
+
+方法是找到历史提交的commit id，然后打上就可以了：
+
+$ git log --pretty=oneline --abbrev-commit
